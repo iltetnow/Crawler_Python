@@ -50,15 +50,16 @@ if __name__ == '__main__':
     print("UpPageIndex:",UpPageIndex)
     print("----------------------------------------------------------")
 
-    #Get the key word result in index page
-    search_result(soup, SearchKW, PttURL, PttLinkTag)
-    
     #Get the key word result in PageRange
-    for x in range(0,SearchPageRange-1):
+    for x in range(SearchPageRange-1,-1,-1):
+        print("######################Page: ", x+1, " ######################")
         WebURL = WebURLBase + "/" + SearchBoard + "/index" + str(UpPageIndex-x) + ".html"
         soup = get_web_page(WebURL)
         search_result(soup, SearchKW, PttURL, PttLinkTag)
 
+    #Get the key word result in index page
+    print("######################Top Page######################")
+    search_result(soup, SearchKW, PttURL, PttLinkTag)
 
 
 
